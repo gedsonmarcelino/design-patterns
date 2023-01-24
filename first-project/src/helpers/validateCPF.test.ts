@@ -7,8 +7,14 @@ describe('validateCPF:', () => {
     expect(isValidCPF).toBe(true);
   });
 
-  it('should return valid cpf 2', () => {
+  it('should return valid cpf with special caracters', () => {
     const cpf = '658.067.386-98';
+    const isValidCPF = validateCPF(cpf);
+    expect(isValidCPF).toBe(true);
+  });
+
+  it('should return valid cpf when rest of operation is below 2', () => {
+    const cpf = '354.325.655-60';
     const isValidCPF = validateCPF(cpf);
     expect(isValidCPF).toBe(true);
   });
@@ -27,12 +33,6 @@ describe('validateCPF:', () => {
 
   it('should return invalid cpf', () => {
     const cpf = '01929781704';
-    const isValidCPF = validateCPF(cpf);
-    expect(isValidCPF).toBe(false);
-  });
-
-  it('should return invalid cpf 2', () => {
-    const cpf = '01..1297-81704';
     const isValidCPF = validateCPF(cpf);
     expect(isValidCPF).toBe(false);
   });

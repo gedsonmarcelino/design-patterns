@@ -26,18 +26,10 @@ function calculateDigits(cpf: string) {
 }
 
 export function validateCPF(cpf: string): boolean {
-  if (cpf.length < 11 || cpf.length > 14) {
-    return false;
-  }
-
-  cpf = clearSpecialCharacters(cpf);
-
-  try {
-    let [dg1, dg2] = calculateDigits(cpf);
-    const currentDigits = cpf.substring(9, 11);
-    const calculatedDigits = `${dg1}${dg2}`;
-    return currentDigits === calculatedDigits;
-  } catch (e) {
-    return false;
-  }
+  if (cpf.length < 11 || cpf.length > 14) return false;
+  const cpfCleared = clearSpecialCharacters(cpf);
+  const [dg1, dg2] = calculateDigits(cpfCleared);
+  const currentDigits = cpfCleared.substring(9, 11);
+  const calculatedDigits = `${dg1}${dg2}`;
+  return currentDigits === calculatedDigits;
 }

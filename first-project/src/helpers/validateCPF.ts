@@ -1,6 +1,12 @@
 // @ts-nocheck
+const [MIN_CHARS, MAX_CHARS] = [11, 14];
+
 function clearSpecialCharacters(value: string) {
   return value.replace(/[\s\.-]/g, '');
+}
+
+function getDigits(cpf: string) {
+  return cpf.substring(9, 11);
 }
 
 function calculateDigit1(value: number) {
@@ -22,14 +28,13 @@ function calculateDigits(cpf: string) {
   }
   digit1 = calculateDigit1(digit1);
   digit2 = calculateDigit2(digit1, digit2);
-  return [digit1, digit2];
+  return `${digit1}${digit2}`;
 }
 
 export function validateCPF(cpf: string): boolean {
-  if (cpf.length < 11 || cpf.length > 14) return false;
+  if (cpf.length < MIN_CHARS || cpf.length > MAX_CHARS) return false;
   const cpfCleared = clearSpecialCharacters(cpf);
-  const [dg1, dg2] = calculateDigits(cpfCleared);
-  const currentDigits = cpfCleared.substring(9, 11);
-  const calculatedDigits = `${dg1}${dg2}`;
+  const currentDigits = getDigits(cpfCleared);
+  const calculatedDigits = calculateDigits(cpfCleared);
   return currentDigits === calculatedDigits;
 }

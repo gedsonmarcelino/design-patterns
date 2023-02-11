@@ -1,4 +1,5 @@
 import { loadDataById } from "./services/api";
+import { formatCPF } from "./utils/formatCPF";
 import { formatName } from "./utils/formatName";
 import { formatPhone } from "./utils/formatPhone";
 
@@ -24,6 +25,14 @@ describe('Monad Pattern', () => {
       .get();
 
     expect(result.name).toBe('GEDSON MARCELINO')
+  })
+
+  it('should transform format CPF', async () => {
+    const result = (await loadDataById(1))
+      .map(formatCPF)
+      .get();
+
+    expect(result.cpf).toBe('111.222.333-44')
   })
 
   it('should format name and phone', async () => {

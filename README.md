@@ -1,12 +1,12 @@
-# Clean Architecture and Clean Code
+# Design Patterns
 
-This is all tasks made in Clean Architecture and Clean Code course offered by branas.io.
+This project has some example of design patterns.
 
-## Project 01
+## Functional Patterns
 
-Diagram ER
-
-![DER](./docs/der.png)
+* [Currying](./patterns-functional/currying/)
+* [Dependency Injection](./patterns-functional//dependency-injection/)
+* [Monads](./patterns-functional/monads/) 
 
 ## Developed by
 
